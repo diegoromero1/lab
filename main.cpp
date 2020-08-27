@@ -35,8 +35,8 @@ vector<string> split(const string& str, const string& delim)
 int main(int argc, char **argv){
     
     int c;
-    
     vector<int> myVector;
+    
     
     string filenameIN;
     string filenameOUT;
@@ -60,8 +60,24 @@ int main(int argc, char **argv){
                 abort ();
         }
     }
+    cout << filenameIN << "" << filenameOUT << "" << numVector << endl;
     
     //Aquí debe escribir su lógica
     
+    
+    fstream fileIn(filenameIN);
+    
+    if(!fileIn.is_open()){
+    	fileIn.open(filenameIN, ios::in);
+	}
+    ofstream fileOut(filenameOUT);
+    if(!fileOut.is_open()){
+    	fileOut.open(filenameOUT);
+	}
+	string line;
+	for(int i=0;i< numVector;i++){
+		getline(fileIn,line);
+		cout << "Imprimiendo la linea " << i << "" << line << endl;
+	}
     return 0;
 }
